@@ -36,4 +36,14 @@ func _physics_process(delta):
 		speed = 0
 		
 	velocity = speed * direction * delta
-	move_and_collide(velocity)
+#warning-ignore:return_value_discarded
+	var kb2d = move_and_collide(velocity)
+	if kb2d:
+		var collideWith = kb2d.collider
+		
+		if collideWith.is_in_group("Food"):
+			collideWith.queue_free()
+			get_node("/root/Game").spawn_food()
+			get_node("/root/Game").length += 1
+			
+	#if kb2d == KinematicCollision2D.new(1

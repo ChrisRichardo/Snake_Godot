@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Snake.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Game" type="Node2D"]
+
+[node name="Snake" type="Node2D" parent="."]
+
+[node name="Head" type="KinematicBody2D" parent="Snake"]
+position = Vector2( 528, 400 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Snake/Head"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Snake/Head"]
+scale = Vector2( 1.6, 1.6 )
+shape = SubResource( 1 )
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="Collision" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 0, 608, 0, 608, -32, 576, -32, -32, 0, -64, 992, -64, 1056, -32, 1056, 576, 1024, 608, 1024, 0, 0, 0 )
+
+[node name="Collision_Down" type="CollisionPolygon2D" parent="Walls"]
+polygon = PoolVector2Array( 0, 608, 1024, 608, 1024, 672, 416, 672, 0, 672 )
+

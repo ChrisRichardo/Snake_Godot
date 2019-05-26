@@ -1,6 +1,8 @@
 extends Node2D
 
 var snake_parts = []
+var body_pos = []
+var body_dir = []
 var length = 0 setget set_score
 # Declare member variables here. Examples:
 # var a = 2
@@ -10,7 +12,7 @@ func set_score(value):
 	get_node("Length").set_text("Length: " + str(length))
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#snake_parts.push_back(get_node("Snake/Head").position)
+	body_pos.append(get_node("Snake/Head").position)
 	spawn_food()
 
 func spawn_food():

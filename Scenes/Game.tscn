@@ -1,14 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Scripts.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/Snake.png" type="Texture" id=3]
-[ext_resource path="res://Scripts/Body.gd" type="Script" id=4]
-[ext_resource path="res://Sprites/Body.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-
-[sub_resource type="RectangleShape2D" id=2]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -20,6 +16,7 @@ script = ExtResource( 1 )
 ]]
 editor/display_folded = true
 position = Vector2( 528, 400 )
+z_index = 1
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
@@ -32,19 +29,8 @@ texture = ExtResource( 3 )
 scale = Vector2( 1.6, 1.6 )
 shape = SubResource( 1 )
 
-[node name="Body" type="KinematicBody2D" parent="Snake"]
-position = Vector2( 528, 432 )
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sprite" type="Sprite" parent="Snake/Body"]
-texture = ExtResource( 5 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Snake/Body"]
-scale = Vector2( 1.6, 1.6 )
-shape = SubResource( 2 )
+[node name="Bodies" type="Node2D" parent="Snake"]
+position = Vector2( 0, -1 )
 
 [node name="Walls" type="StaticBody2D" parent="."]
 
